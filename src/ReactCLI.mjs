@@ -1,5 +1,5 @@
 import CLI, {Reader, Writter} from "@makechtec/tezcatl-cli";
-import Pipe from "@makechtec/pipe";
+import Pipe from "@makechtec/pipe/pipe.js";
 import BlockExtractor from "@makechtec/tezcatl-blocks";
 
 export const ReactCLI = {
