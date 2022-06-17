@@ -1,2 +1,0 @@
-tsc
-terser prebuild/ReactCLI.js --output index.js

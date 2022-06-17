@@ -3,25 +3,41 @@ import ${import} from '';
 @endforeach
 
 @if(class)
-export default class ${component} extends React.Component {
+export default class ${com} extends React.component {
+
 	render() {
 		return (
 			<div>
-				<h1>${component}</h1>
+				<h1>${com}</h1>
 			</div>
 		);
 	}
 }
 @else
-export const ${component} = () => {
+export const ${com} = ({
+		@foreach(prop)
+		${prop} = '',
+		@endforeach
+	}) => {
+
+	@foreach(state)
+	let [${state}, set${state}] = useState('');
+	@endforeach
+
+	@foreach(effect)
+	useEffect(() => {
+		// some effect
+	}, []);
+	@endforeach
+
 	return (
 		<div>
-			<h1>${component}</h1>
+			<h1>${com}</h1>
 		</div>
 	);
 };
 
-export default ${component};
+export default ${com};
 @endif
 
 @foreach(const)

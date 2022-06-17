@@ -2,6 +2,7 @@ import {CLI, Reader, Writter} from "@makechtec/tezcatl-cli";
 import {ConditionalProcessor} from "@makechtec/tezcatl-conditional-processor";
 import { IterativeProcessor } from "@makechtec/tezcatl-iterative-processor";
 import {Pipe} from "@makechtec/pipe";
+import {cwd} from "node:process";
 
 export const run = function(){
 
@@ -10,22 +11,22 @@ export const run = function(){
     let targetDir = CLI.getArgumentValue(ARGS.targetDir);
     let placeholders = CLI.getAllArguments();
     let file = CLI.getArgumentValue(ARGS.file);
-    let ext = EXTENSION;
+    let ext = CLI.getArgumentValue(ARGS.ext);
     
-    if(CLI.isFlag(FLAGS.js)){
-        ext = EXTENSION_JS;
+    if(ext.value == ""){
+        ext.value = EXTENSION;
     }
 
-    if(template == ""){
-        template = DEFAULT_TEMPLATE;
+    if(template.value == ""){
+        template.value = DEFAULT_TEMPLATE;
     }
 
-    if(file == ""){
-        file = component;
+    if(file.value == ""){
+        file.value = component.value;
     }
 
-    let fileName = targetDir + "/" + file + ext;
-    let content = Reader.readTemplate(template);
+    let fileName = targetDir.value + "/" + file.value + ext.value;
+    let content = readContent(template.value + TEMPLATE_EXTENSION);
     let conditionalProcessor = new ConditionalProcessor();
     let iterativeProcessor = new IterativeProcessor();
     let pipe = new Pipe(content);
@@ -45,22 +46,27 @@ export const run = function(){
     .execActions();
 };
 
+export const readContent = (templateName: string) => {
+    let userTemplatePath = USER_TEMPLATE_DIR + "/" + templateName;
+    let defaultTemplatePath = DEFAULT_TEMPLATE_DIR + "/" + templateName;
+    let content = Reader.readTemplate(userTemplatePath);
+
+    if(content == ""){
+        content = Reader.readTemplate(defaultTemplatePath);
+    }
+    return content;
+};
+
 export const ARGS = {
     component: "com",
     template: "temp",
     targetDir: "dir",
     file: "file",
+    ext: "ext",
 };
 
-export const FLAGS = {
-    js: "js",
-};
-
-export const COMPONENT = "c";
-export const TEMPLATE = "t";
 export const DEFAULT_TEMPLATE = "react-component";
-export const EXTENSION_JS = ".js";
+export const TEMPLATE_EXTENSION = ".temp";
 export const EXTENSION = ".jsx";
-export const MULTI_EXPORTS = "multi";
-export const FUNCTION_PREFIX = "fn";
-export const CONSTANT_PREFIX = "const";
+export const USER_TEMPLATE_DIR = cwd() + "/templates";
+export const DEFAULT_TEMPLATE_DIR = cwd() + "/node_modules/@makechtec/tezcatl-preset-react/templates";

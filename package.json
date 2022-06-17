@@ -1,21 +1,22 @@
 {
-  "name": "@makechtec/tezcatl-react",
+  "name": "@makechtec/tezcatl-preset-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc && terser prebuild/ReactCLI.js --output index.js",
+    "test": ""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/angeldomp49/tezcatl-react.git"
+    "url": "git+https://github.com/angeldomp49/tezcatl-preset-react.git"
   },
   "author": "makechtec",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/angeldomp49/tezcatl-react/issues"
+    "url": "https://github.com/angeldomp49/tezcatl-preset-react/issues"
   },
-  "homepage": "https://github.com/angeldomp49/tezcatl-react#readme",
+  "homepage": "https://github.com/angeldomp49/tezcatl-preset-react#readme",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.17.12",
     "@babel/preset-env": "^7.18.2",
@@ -25,7 +26,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@makechtec/pipe": "^1.0.4",
+    "@makechtec/pipe": "^1.0.5",
     "@makechtec/tezcatl-cli": "^1.0.4",
     "@makechtec/tezcatl-conditional-processor": "^1.0.1",
     "@makechtec/tezcatl-iterative-processor": "^1.0.1"
