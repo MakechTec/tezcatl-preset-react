@@ -25,8 +25,9 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@makechtec/pipe": "^1.0.1",
-    "@makechtec/tezcatl-blocks": "^1.0.1",
-    "@makechtec/tezcatl-cli": "^1.0.1"
+    "@makechtec/pipe": "^1.0.4",
+    "@makechtec/tezcatl-cli": "^1.0.4",
+    "@makechtec/tezcatl-conditional-processor": "^1.0.1",
+    "@makechtec/tezcatl-iterative-processor": "^1.0.1"
   }
 }
