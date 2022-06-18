@@ -29,6 +29,7 @@
     "@makechtec/pipe": "^1.0.5",
     "@makechtec/tezcatl-cli": "^1.0.4",
     "@makechtec/tezcatl-conditional-processor": "^1.0.1",
+    "@makechtec/tezcatl-constants": "^1.0.0",
     "@makechtec/tezcatl-iterative-processor": "^1.0.1"
   }
 }

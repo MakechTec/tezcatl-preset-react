@@ -1,4 +1,5 @@
 import {CLI, Reader, Writter} from "@makechtec/tezcatl-cli";
+import {TEMPLATE_EXTENSION} from "@makechtec/tezcatl-constants";
 import {ConditionalProcessor} from "@makechtec/tezcatl-conditional-processor";
 import { IterativeProcessor } from "@makechtec/tezcatl-iterative-processor";
 import {Pipe} from "@makechtec/pipe";
@@ -66,7 +67,6 @@ export const ARGS = {
 };
 
 export const DEFAULT_TEMPLATE = "react-component";
-export const TEMPLATE_EXTENSION = ".temp";
 export const EXTENSION = ".jsx";
 export const USER_TEMPLATE_DIR = cwd() + "/templates";
 export const DEFAULT_TEMPLATE_DIR = cwd() + "/node_modules/@makechtec/tezcatl-preset-react/templates";
